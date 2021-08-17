@@ -54,7 +54,7 @@ return res.json(user)
 //Get specific user
 router.get('/:id', asyncHandler(async function(req, res){
   const user = await User.findByPk(req.params.id)
-  return res.json([...user])
+  return res.json(user)
 }))
 
 

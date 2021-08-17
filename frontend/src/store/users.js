@@ -56,7 +56,7 @@ export const getUsers = () => async dispatch => {
 
 //get a specfic user
 export const getOneUser = userId => async dispatch => {
-    console.log(userId)
+    // console.log(userId)
     const response = await fetch(`/api/users/${userId}`)
     
 
@@ -89,15 +89,15 @@ export const getOneUser = userId => async dispatch => {
               };
           }
           case LOAD_ONE:{
-              const oneUser = {}
-              console.log(action.user)
-             action.user.forEach(user => {
-                 oneUser[user.id] = user;
-             })
-              return{
-                  ...oneUser,
-                  ...state, 
-              }
+            //   const oneUser = {}
+            //   console.log(action.user)
+            //  action.user.forEach(user => {
+            //      oneUser[user.id] = user;
+            //  })
+            return {
+                ...state,
+                [action.user.id]: action.user,
+            };
           }
           default:
               return state;
