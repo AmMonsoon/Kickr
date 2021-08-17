@@ -12,8 +12,9 @@ const UserProfile = () => {
     // console.log(userId)
 
     const users = useSelector(state => Object.values(state.users))
-    const user = users.filter(user => user.id === userId)
+    const user = users.find(user => Number(user.id) === Number(userId))
     console.log(user)
+    
 
 // useEffect(() => {
 // dispatch(getOneUser(userId))
@@ -22,7 +23,7 @@ const UserProfile = () => {
 
 return(
 <div className='user-profile'>
-    <h1>{user.username}</h1>
+    <h1>user</h1>
 </div>
 );
 
