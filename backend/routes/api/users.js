@@ -3,7 +3,8 @@ const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User } = require('../../db/models');
+const { User ,Album} = require('../../db/models');
+const album = require('../../db/models/album');
 
 const router = express.Router();
 
@@ -42,6 +43,19 @@ router.post(
       });
     }),
   );
+
+//User listing
+router.get('/', asyncHandler(async function (req,res){
+const user = await User.findAll();
+return res.json(user)
+}))
+
+
+//Get albums
+router.get('/albums'), asyncHandler(async function(req, res){
+  const album = await Album.findAll()
+  return res.json(album)
+})
 
 
 module.exports = router;

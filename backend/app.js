@@ -8,9 +8,8 @@ const { environment } = require('./config');
 const routes = require('./routes');
 const { ValidationError } = require('sequelize');
 const isProduction = environment === 'production'
-
-
 const app = express();
+
 app.use(morgan('dev'));
 
 app.use(cookieParser());
@@ -38,6 +37,9 @@ app.use(
     );
 
 app.use(routes);
+
+
+
 app.use((_req, _res, next) => {
     const err = new Error("The requested resource couldn't be found.");
     err.title = "Resource Not Found";
