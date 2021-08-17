@@ -51,11 +51,11 @@ return res.json(user)
 }))
 
 
-//Get albums
-router.get('/albums'), asyncHandler(async function(req, res){
-  const album = await Album.findAll()
-  return res.json(album)
-})
+//Get specific user
+router.get('/:id', asyncHandler(async function(req, res){
+  const user = await User.findByPk(req.params.id)
+  return res.json([...user])
+}))
 
 
 module.exports = router;

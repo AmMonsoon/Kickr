@@ -5,7 +5,8 @@ import SignUpFormPage from "./components/SignUpFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import UsersList from "./components/Users/UsersList"
-import Albums from "./components/Albums/Albums"
+// import Albums from "./components/Albums/Albums"
+import UserProfile from "./components/Users/UserProfile";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,8 +26,8 @@ function App() {
           <Route  exact path="/users">
             <UsersList />
           </Route>
-          <Route  exact path="/users/:id/albums">
-            <Albums />
+          <Route  exact path="/users/:userId/">
+            <UserProfile />
           </Route>
         </Switch>
       )}

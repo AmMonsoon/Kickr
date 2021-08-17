@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from "../../store/users";
 import { useParams } from "react-router";
@@ -11,23 +11,24 @@ const UserDisplay = () => {
     const users = useSelector(state => Object.values(state.users))
     
 
-    console.log('USERS',users)
+    // console.log('USERS',users)
 
 useEffect(() => {
 dispatch(getUsers(userId))
-}, [userId]);
+}, [dispatch,userId]);
 
     return (
+        <>
         <div className='users-display'>
             <div className='users-list'>
 
            {users.map(user => <div className='users-card' key={user.id}>  
            <img className='default-icon' src='./images/icon-default.png' alt='' /> 
-               {user.username}
-              
+               {user.username}    
             </div>)}
             </div>
         </div>
+        </>
     );
 }
 

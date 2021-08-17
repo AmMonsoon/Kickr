@@ -1,6 +1,8 @@
 
 
+
 const LOAD = 'user/LOAD'
+const LOAD_ONE = 'user/LOAD_ONE'
 // const LOAD_ALBUMS = 'user/LOAD_ALBUMS'
 // const ADD_IMAGE = 'user/ADD_IMAGE'
 // const ADD_ALBUM = 'user/ADD_ALBUM'
@@ -10,6 +12,10 @@ const load = list => ({
     list,
 }) 
 
+const loadUser = user => ({
+    type: LOAD_ONE,
+    user
+})
 // const loadAlbums = album => ({
 //     type: LOAD_ALBUMS,
 //     album
@@ -26,7 +32,6 @@ const load = list => ({
 // });
 
 
-
 //get all the albums of a specific user 
 
 // export const getAlbum = () => async dispatch => {
@@ -38,6 +43,7 @@ const load = list => ({
 //     }
 // }
 
+
 //get a list of all users
 export const getUsers = () => async dispatch => {
     const response = await fetch(`/api/users`);
@@ -48,12 +54,24 @@ export const getUsers = () => async dispatch => {
     }
   };
 
+//get a specfic user
+export const getOneUser = userId => async dispatch => {
+    console.log(userId)
+    const response = await fetch(`/api/users/${userId}`)
+    
+
+    if (response.ok){
+        const user = await response.json();
+        dispatch(loadUser(user));
+    }
+}
+
 // export const getUserId = (userId) => async dispatch => {
 //     const response = await fetch(`/api/users/${userId}`)
   
 //     if(response.ok){
 //       const list = await response.json();
-//       dispatch(addImage(list));
+//       dispatch(LOAD(list));
 //     }
 //   }
 
@@ -70,12 +88,17 @@ export const getUsers = () => async dispatch => {
                   ...state
               };
           }
-        //   case LOAD_ALBUMS:{
-        //       return{
-        //           ...state,
-        //           albums: action.albums
-        //       }
-        //   }
+          case LOAD_ONE:{
+              const oneUser = {}
+              console.log(action.user)
+             action.user.forEach(user => {
+                 oneUser[user.id] = user;
+             })
+              return{
+                  ...oneUser,
+                  ...state, 
+              }
+          }
           default:
               return state;
       }

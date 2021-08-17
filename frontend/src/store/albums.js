@@ -2,9 +2,6 @@ const GET_ALBUMS = 'album/GET_ALBUMS'
 
 
 
-
-
-
 export const getAlbums = (albums) => {
     return {
         type: GET_ALBUMS,
@@ -21,25 +18,15 @@ export const fetchAlbums =  () => async(dispatch) =>{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 const albumReducer = (state = {} , action) => {
-    let newState = {...state};
+    let newState;
     switch(action.type) {
         case GET_ALBUMS:
             action.albums.forEach((album) => {
                 newState[album.id] = album;
             })
-            return newState;
+            return ({...newState, ...state});
+
             default:
                 return state;
     }
