@@ -10,16 +10,18 @@ const dispatch = useDispatch()
 const {userId} = useParams()
 
 const albums  = useSelector(state => Object.values(state.albums));
-console.log(albums)
-// console.log(albums)
+console.log('ALBUMS',albums)
+
+
+
 useEffect(() => {
     dispatch(getAlbums(userId))
-})
+}, [dispatch, userId])
 
 
 return(
 <div>
-    <h3>Album</h3>
+    <h3>Albums</h3>
 </div>
 );
 }

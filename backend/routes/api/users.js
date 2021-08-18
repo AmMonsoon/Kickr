@@ -4,7 +4,7 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { User ,Album} = require('../../db/models');
-const album = require('../../db/models/album');
+
 
 const router = express.Router();
 
@@ -53,8 +53,24 @@ return res.json(user)
 
 //Get specific user
 router.get('/:id', asyncHandler(async function(req, res){
-  const user = await User.findByPk(req.params.id)
+  const user = await User.findAll({
+   where:{ 
+     id: req.params.id
+   },
+   include: Album
+  })
+  
   return res.json(user)
+}))
+
+//Get all albums for a specific user
+router.get('/:id/albums', asyncHandler(async function(req, res){
+  const albums = await Album.findAll({
+    where: {
+      userId: req.params.id
+    }
+  })
+  return res.json(albums)
 }))
 
 

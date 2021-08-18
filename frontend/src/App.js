@@ -7,6 +7,7 @@ import Navigation from "./components/Navigation";
 import UsersList from "./components/Users/UsersList"
 // import Albums from "./components/Albums/Albums"
 import UserProfile from "./components/Users/UserProfile";
+import Albums from "./components/Albums/Albums";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route  exact path="/users/:userId/">
             <UserProfile />
+          </Route>
+          <Route path='/users/:userId/albums'>
+            <Albums />
           </Route>
         </Switch>
       )}

@@ -16,32 +16,17 @@ const loadUser = user => ({
     type: LOAD_ONE,
     user
 })
-// const loadAlbums = album => ({
-//     type: LOAD_ALBUMS,
-//     album
-// })
+
 
 // const addImage = image => {
 //     type: ADD_IMAGE,
 //     image
 // }
 
-// const addOneAlbum = album => ({
-// type: ADD_ALBUM,
-// album
-// });
 
 
-//get all the albums of a specific user 
 
-// export const getAlbum = () => async dispatch => {
-//     const response = await fetch('/api/users/:id/albums');
 
-//     if(response.ok) {
-//         const userAlbum = await response.json();
-//         dispatch(load(userAlbum))
-//     }
-// }
 
 
 //get a list of all users
@@ -89,11 +74,7 @@ export const getOneUser = userId => async dispatch => {
               };
           }
           case LOAD_ONE:{
-            //   const oneUser = {}
-            //   console.log(action.user)
-            //  action.user.forEach(user => {
-            //      oneUser[user.id] = user;
-            //  })
+              
             return {
                 ...state,
                 [action.user.id]: action.user,
