@@ -1,4 +1,4 @@
-// import React from "react";
+import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAlbums } from "../../store/albums";
@@ -9,15 +9,16 @@ import { NavLink } from "react-router-dom";
 const Albums = () =>{
 const dispatch = useDispatch()
 const {userId} = useParams()
-
+// console.log(userId)
 const albums  = useSelector(state => Object.values(state.albums));
 
-console.log('ALBUMS',albums)
+// console.log('ALBUMS',albums)
 
 
 
 useEffect(() => {
-    dispatch(fetchAlbums(userId))
+    console.log("hit use effect")
+    dispatch(fetchAlbums(+userId))
 }, [dispatch, userId])
 
 

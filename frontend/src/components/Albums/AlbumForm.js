@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { newAlbum } from '../../store/albums';
@@ -6,28 +6,29 @@ import { newAlbum } from '../../store/albums';
 const CreateAlbumForm = () => {
 const dispatch = useDispatch();
 const history = useHistory();
-
+const userId = useSelector(state => state.session.user.id)
 const [title, setTitle] = useState('')
 const [imageUrl, setImageUrl] = useState('')
 const [description, setDescription] = useState('')
 
 
-useEffect(() => {
-    dispatch(newAlbum())
-}, [dispatch])
+// useEffect(() => {
+//     dispatch(newAlbum(userId))
+// }, [dispatch, userId])
 
 const handleSubmit = async (e) => {
     e.preventDefault();
 
     const album = {
+        userId,
         title,
         imageUrl,
         description
     }
 
-    let createAlbum = await dispatch(newAlbum(album))
+    let createAlbum = await dispatch(newAlbum(album, userId))
     if(createAlbum) {
-        history.push(`/users/${createAlbum.id}`)
+        history.push(`/users/${userId}`)
     }
     
 }

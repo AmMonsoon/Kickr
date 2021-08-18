@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getOneUser } from "../../store/users";
 import { useParams } from "react-router";
-
+import Albums from "../Albums/Albums";
 
 
 const UserProfile = () => {
@@ -24,6 +24,7 @@ dispatch(getOneUser(userId))
 return(
 <div className='user-profile'>
     <h1>{user?.username}</h1>
+    <Albums />
 </div>
 );
 
