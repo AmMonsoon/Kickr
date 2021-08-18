@@ -4,6 +4,7 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { User ,Album} = require('../../db/models');
+const { default: Albums } = require('../../../frontend/src/components/Albums/Albums');
 
 
 const router = express.Router();
@@ -59,7 +60,7 @@ router.get('/:id', asyncHandler(async function(req, res){
    },
    include: Album
   })
-  
+
   return res.json(user)
 }))
 
@@ -73,5 +74,11 @@ router.get('/:id/albums', asyncHandler(async function(req, res){
   return res.json(albums)
 }))
 
+
+//Create a new album
+router.post('/:id/albums', asyncHandler(async (req, res) => {
+  const album = await Album.create(req.body)
+  res.json(album)
+}))
 
 module.exports = router;

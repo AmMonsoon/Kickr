@@ -8,6 +8,7 @@ import UsersList from "./components/Users/UsersList"
 // import Albums from "./components/Albums/Albums"
 import UserProfile from "./components/Users/UserProfile";
 import Albums from "./components/Albums/Albums";
+import AlbumForm from "./components/Albums/AlbumForm"
 
 function App() {
   const dispatch = useDispatch();
@@ -27,11 +28,12 @@ function App() {
           <Route  exact path="/users">
             <UsersList />
           </Route>
-          <Route  exact path="/users/:userId/">
+          <Route  exact path="/users/:userId(\\d+)">
             <UserProfile />
           </Route>
           <Route path='/users/:userId/albums'>
             <Albums />
+            <AlbumForm />
           </Route>
         </Switch>
       )}

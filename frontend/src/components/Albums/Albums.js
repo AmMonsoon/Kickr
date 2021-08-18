@@ -1,8 +1,9 @@
-import React from "react";
+// import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAlbums } from "../../store/albums";
+import { fetchAlbums } from "../../store/albums";
 import { useParams } from "react-router";
+import { NavLink } from "react-router-dom";
 
 
 const Albums = () =>{
@@ -10,18 +11,28 @@ const dispatch = useDispatch()
 const {userId} = useParams()
 
 const albums  = useSelector(state => Object.values(state.albums));
+
 console.log('ALBUMS',albums)
 
 
 
 useEffect(() => {
-    dispatch(getAlbums(userId))
+    dispatch(fetchAlbums(userId))
 }, [dispatch, userId])
 
 
 return(
-<div>
-    <h3>Albums</h3>
+<div className='albums-display'>
+    <div className='users-list'>
+       {albums.map(album =>  
+       <NavLink className='album-link' to={`/users/${userId}/albums/${album.id}`}>
+           <div className='albums-link-image'>
+           <p>{album.title}</p>
+           </div>
+           </NavLink>
+           
+           )}
+    </div>
 </div>
 );
 }
