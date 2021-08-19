@@ -7,7 +7,7 @@ import Navigation from "./components/Navigation";
 import UsersList from "./components/Users/UsersList"
 import UserProfile from "./components/Users/UserProfile";
 import Albums from "./components/Albums/Albums";
-import AlbumForm from "./components/Albums/AlbumForm"
+// import AlbumForm from "./components/Albums/AlbumForm"
 import SingleAlbum from "./components/Albums/SingleAlbum"
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route  path="/signup,">
+          <Route  path="/signup">
             <SignUpFormPage />
           </Route>
           <Route  exact path="/users">
@@ -32,9 +32,9 @@ function App() {
             <UserProfile />
             <Albums />
           </Route>
-          <Route exact path='/users/:userId/albums'>
+          {/* <Route exact path='/users/:userId/albums'>
             <AlbumForm />
-          </Route>
+          </Route> */}
           <Route path='/users/:userId/albums/:albumId'>
             <SingleAlbum />
           </Route>

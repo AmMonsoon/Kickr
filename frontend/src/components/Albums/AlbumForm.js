@@ -29,6 +29,7 @@ const handleSubmit = async (e) => {
     let createAlbum = await dispatch(newAlbum(album, userId))
     if(createAlbum) {
         history.push(`/users/${userId}`)
+        window.location.reload()
     }
     
 }
@@ -37,11 +38,13 @@ const handleCancelClick = (e) => {
     e.preventDefault()
 }
 
+
 return (
 <section className='new-album-form'>
     <form onSubmit={handleSubmit}>
         <input type="text" placeholder= "Title" required value={title} onChange={e => setTitle(e.target.value)} />
         <input type="text" placeholder= "Image URL" required value={imageUrl} onChange={e => setImageUrl(e.target.value)} /> 
+        <button></button>
         {/* <textarea type="description" placeholder="description" value={description} onChange={e => setDescription(e.target.value)}/> */}
         <button type="submit">Add</button>
         <button type="button" onClick={handleCancelClick}>Cancel</button>
