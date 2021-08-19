@@ -2,7 +2,10 @@ import { csrfFetch } from "./csrf"
 
 const GET_ALBUMS = 'album/GET_ALBUMS'
 const ADD_ALBUM = 'album/ADD_ALBUM'
-// const EDIT_ALBUM = 'album/UPDATE_ALBUM'
+const EDIT_ALBUM = 'album/EDIT_ALBUM'
+
+
+
 
 export const getAlbums = (albums) => {
     return {
@@ -16,6 +19,11 @@ type: ADD_ALBUM,
 album
 });
 
+
+export const editAlbum = (editedAlbum) => ({
+    type:EDIT_ALBUM,
+    editedAlbum
+})
 
 // get all the albums of a specific user 
 export const fetchAlbums =  (userId) => async(dispatch) =>{
@@ -41,7 +49,19 @@ export const newAlbum = (album, userId) => async(dispatch) => {
         return album
     }
 }
+//edit an album
+export const updateAlbum = album => async (dispatch) => {
+    const response = await csrfFetch(`/api/albums/${album.id}/edit`, {
+        method: 'PUT',
+        body: JSON.stringify(album)
+    }) 
+    const editedAlbum = await response.json();
 
+
+    if(response.ok){
+        dispatch(editAlbum(editedAlbum))
+    }
+}
 
 
 
@@ -59,9 +79,13 @@ const albumReducer = (state = {} , action) => {
         case ADD_ALBUM:
             return {
                 ...newState,
-                [action.album.id]: action.album
-                      
+                [action.album.id]: action.album                     
                     };
+        case EDIT_ALBUM:
+            return{
+                ...newState,
+                [action.editAlbum.id]: action.album
+            }
             default:
                 return state;
     }

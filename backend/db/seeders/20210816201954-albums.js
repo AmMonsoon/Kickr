@@ -5,10 +5,10 @@ module.exports = {
   
       return queryInterface.bulkInsert('Albums', [
         {
-        userId: 5, title:'My Favorite Shoes'
+        userId: 5, title:'My Favorite Shoes', imageUrl:"/images/testImg.jpeg"
       },
       {
-        userId: 7, title:'classics'
+        userId: 7, title:'classics', imageUrl:"/images/revolution-5.jpeg"
       },
     ])
     

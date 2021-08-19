@@ -27,10 +27,11 @@ return(
     <div className='users-list'>
        {albums.map(album =>  
        <NavLink className='album-link' to={`/users/${userId}/albums/${album.id}`}>
-           <div className='albums-link-image'>
+           <div className='albums-link-image' key={album.id}>
            <p>{album.title}</p>
+           <img src={album?.imageUrl} alt='album-cover'/>
            </div>
-           </NavLink>
+       </NavLink>
            
            )}
     </div>

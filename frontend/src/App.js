@@ -22,7 +22,7 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route exact path="/signup,">
+          <Route  path="/signup,">
             <SignUpFormPage />
           </Route>
           <Route  exact path="/users">

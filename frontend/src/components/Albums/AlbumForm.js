@@ -9,7 +9,7 @@ const history = useHistory();
 const userId = useSelector(state => state.session.user.id)
 const [title, setTitle] = useState('')
 const [imageUrl, setImageUrl] = useState('')
-const [description, setDescription] = useState('')
+// const [description, setDescription] = useState('')
 
 
 // useEffect(() => {
@@ -23,7 +23,7 @@ const handleSubmit = async (e) => {
         userId,
         title,
         imageUrl,
-        description
+        // description
     }
 
     let createAlbum = await dispatch(newAlbum(album, userId))
@@ -42,8 +42,8 @@ return (
     <form onSubmit={handleSubmit}>
         <input type="text" placeholder= "Title" required value={title} onChange={e => setTitle(e.target.value)} />
         <input type="text" placeholder= "Image URL" required value={imageUrl} onChange={e => setImageUrl(e.target.value)} /> 
-        <textarea type="description" placeholder="description" value={description} onChange={e => setDescription(e.target.value)}/>
-        <button type="submit">Add an Album</button>
+        {/* <textarea type="description" placeholder="description" value={description} onChange={e => setDescription(e.target.value)}/> */}
+        <button type="submit">Add</button>
         <button type="button" onClick={handleCancelClick}>Cancel</button>
     </form>
 
