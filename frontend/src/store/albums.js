@@ -25,9 +25,9 @@ export const editAlbum = (editedAlbum) => ({
     editedAlbum
 })
 
-export const removeAlbum = deleteAlbum => ({
+export const removeAlbum = albumId => ({
     type: REMOVE_ALBUM,
-    deleteAlbum
+    albumId
 })
 
 // get all the albums of a specific user 
@@ -76,13 +76,13 @@ export const deleteAlbum = albumId => async(dispatch) => {
     const deletedAlbum = await response.json()
 
     if(response.ok){
-        dispatch(removeAlbum(deleteAlbum))
+        dispatch(removeAlbum(albumId))
     }
     return deletedAlbum;
 }
 
 const albumReducer = (state = {} , action) => {
-    let newState = {};
+    let newState = {...state};
     switch(action.type) {
         case GET_ALBUMS:
             action.albums.forEach((album) => {
@@ -103,7 +103,7 @@ const albumReducer = (state = {} , action) => {
                 [action.editAlbum.id]: action.album
             }
         case REMOVE_ALBUM:{
-            if(newState[action.deleteAlbum]) delete newState[action.deleteAlbum]
+            if(newState[action.albumId]) delete newState[action.albumId]
             return newState;
         }
             default:

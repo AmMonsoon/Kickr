@@ -94,22 +94,7 @@ const albumNotFound = (albumId) => {
 }
 
 
-router.put('/:id/edit', asyncHandler(async (req, res) => {
-  const albumId = req.params
-  const {title, imageUrl, description} = req.body;
-  const album = await Album.findByPk(albumId)
 
-  if(album){
-    album.title=title;
-    album.imageUrl=imageUrl;
-    album.description=description;
-
-    await home.save()
-    res.status(200).json(album);
-  } else {
-    next(albumNotFound(albumId))
-  }
-}))
 
 
 

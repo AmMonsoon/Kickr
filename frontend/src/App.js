@@ -9,6 +9,7 @@ import UserProfile from "./components/Users/UserProfile";
 import Albums from "./components/Albums/Albums";
 // import AlbumForm from "./components/Albums/AlbumForm"
 import SingleAlbum from "./components/Albums/SingleAlbum"
+import EditAlbum from "./components/Albums/EditAlbum";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,9 +33,10 @@ function App() {
             <UserProfile />
             <Albums />
           </Route>
-          {/* <Route exact path='/users/:userId/albums'>
-            <AlbumForm />
-          </Route> */}
+          <Route exact path='/users/:albumId/edit'>
+            <EditAlbum />
+            {/* <AlbumForm /> */}
+          </Route>
           <Route path='/users/:userId/albums/:albumId'>
             <SingleAlbum />
           </Route>

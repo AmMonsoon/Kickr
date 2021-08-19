@@ -1,14 +1,18 @@
 import { useParams } from "react-router"
 import { updateAlbum } from "../../store/albums";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
+
 
 const EditAlbum = () => {
 const dispatch = useDispatch()
+const {albumId} = useParams()
 const [title, setTitle] = useState()
 const [imageUrl, setImageUrl] = useState()
+const albums = useSelector(state => state.album === albumId)
 
-
+console.log('ALBUMS',albums)
 
 const reset = () => {
     setTitle('')

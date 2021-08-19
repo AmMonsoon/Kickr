@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchAlbums , deleteAlbum} from "../../store/albums";
 import { useParams } from "react-router";
 import { NavLink } from "react-router-dom";
-import { useHistory } from "react-router";
+// import { useHistory } from "react-router";
 import AlbumForm from "./AlbumForm"
 const Albums = () =>{
-const history = useHistory()
+// const history = useHistory()
 const dispatch = useDispatch()
 const {userId} = useParams()
 const [showForm, setShowForm] = useState(true)
@@ -27,10 +27,11 @@ useEffect(() => {
 }, [dispatch, userId])
 
 
-const removeAlbum = e => {
+const removeAlbum = albumId => e => {
+
     e.preventDefault();
-    dispatch(deleteAlbum(userId))
-    history.push(`/users/${userId}`)
+    dispatch(deleteAlbum(albumId))
+    // history.push(`/users/${userId}`)
 }
 
 return(
@@ -41,7 +42,7 @@ return(
            <div className='albums-link-image' key={album.id}>
            <p>{album.title}</p>
            <img src={album?.imageUrl} alt='album-cover'/>
-           <button type='button' onClick={removeAlbum}>-</button>
+           <button type='button' onClick={removeAlbum(album.id)}>-</button>
            </div>
        </NavLink>
 
