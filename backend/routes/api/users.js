@@ -112,15 +112,7 @@ router.put('/:id/edit', asyncHandler(async (req, res) => {
 }))
 
 
-router.delete('/:id', asyncHandler (async function (req, res) {
-  const albumId = req.params.id;
-  if(albumId){
-    await Album.destroy({ where: {id: albumId }})
-    res.status(200).json(albumId)
-  } else {
-    next(albumNotFound(albumId))
-  }
-}))
+
 
 
 module.exports = router;
