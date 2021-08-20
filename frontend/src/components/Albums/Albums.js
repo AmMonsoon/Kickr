@@ -4,8 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchAlbums , deleteAlbum} from "../../store/albums";
 import { useParams } from "react-router";
 import { NavLink } from "react-router-dom";
-// import { useHistory } from "react-router";
 import AlbumForm from "./AlbumForm"
+import './Albums.css'
+
 const Albums = () =>{
 // const history = useHistory()
 const dispatch = useDispatch()
@@ -38,7 +39,7 @@ return(
 <div className='albums-display'>
     <div className='users-list'>
        {albums.map(album =>  
-       <NavLink className='album-link' to={`/users/${userId}/albums/${album.id}`}>
+       <NavLink className='album-link' key={album.id} to={`/users/${userId}/albums/${album.id}`}>
            <div className='albums-link-image' key={album.id}>
            <p>{album.title}</p>
            <img src={album?.imageUrl} alt='album-cover'/>

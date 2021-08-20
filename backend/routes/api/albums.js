@@ -4,8 +4,15 @@ const {Album} = require('../../db/models')
 
 const router = express.Router()
 
+const albumNotFound = (albumId) => {
+    const error = new Error();
+    error.title = 'Album Not Found'
+    error.message = 'Id does not exist'
+    error.status = 422
+    return error
+  }
 
-router.put('/:id/edit', asyncHandler(async (req, res) => {
+router.put('/:id/edit', asyncHandler(async (req, res,next) => {
     const albumId = req.params.id
     const {title, imageUrl, description} = req.body;
     const album = await Album.findByPk(albumId)
@@ -15,7 +22,7 @@ router.put('/:id/edit', asyncHandler(async (req, res) => {
       album.imageUrl=imageUrl;
       album.description=description;
   
-      await home.save()
+      await album.save()
       res.status(200).json(album);
     } else {
       next(albumNotFound(albumId))

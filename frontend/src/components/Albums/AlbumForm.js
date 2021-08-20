@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { newAlbum } from '../../store/albums';
+import './AlbumForm.css'
 
 const CreateAlbumForm = () => {
 const dispatch = useDispatch();
@@ -44,7 +45,7 @@ return (
     <form onSubmit={handleSubmit}>
         <input type="text" placeholder= "Title" required value={title} onChange={e => setTitle(e.target.value)} />
         <input type="text" placeholder= "Image URL" required value={imageUrl} onChange={e => setImageUrl(e.target.value)} /> 
-        <button></button>
+       
         {/* <textarea type="description" placeholder="description" value={description} onChange={e => setDescription(e.target.value)}/> */}
         <button type="submit">Add</button>
         <button type="button" onClick={handleCancelClick}>Cancel</button>

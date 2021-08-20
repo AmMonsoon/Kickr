@@ -1,24 +1,37 @@
 import { useParams } from "react-router"
 import { updateAlbum } from "../../store/albums";
-import { useState } from "react";
+import { useState , useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import { fetchAlbums } from "../../store/albums";
 
 
 const EditAlbum = () => {
 const dispatch = useDispatch()
-const {albumId} = useParams()
-const [title, setTitle] = useState()
-const [imageUrl, setImageUrl] = useState()
-const albums = useSelector(state => state.album === albumId)
+const {albumId, userId} = useParams()
+const album = useSelector(state => state.albums[albumId])
+const [title, setTitle] = useState('')
+const [imageUrl, setImageUrl] = useState('')
 
-console.log('ALBUMS',albums)
+
+// console.log('ALBUMS',album)
 
 const reset = () => {
     setTitle('')
     setImageUrl('')
     }
     
+useEffect(() => {
+    dispatch(fetchAlbums(userId))
+}, [dispatch,userId])
+
+
+useEffect(() => {
+if(album){
+    setTitle(album.title)
+    setImageUrl(album.imageUrl)
+}
+    },[album])
+
     const handleCancelClick = (e) => {
         e.preventDefault()
     }
@@ -27,6 +40,7 @@ const reset = () => {
         e.preventDefault()
         
         const editedAlbum = {
+            id: albumId,
             title,
             imageUrl,
         }

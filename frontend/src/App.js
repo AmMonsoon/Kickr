@@ -34,11 +34,13 @@ function App() {
             <Albums />
           </Route>
           <Route exact path='/users/:albumId/edit'>
-            <EditAlbum />
             {/* <AlbumForm /> */}
           </Route>
-          <Route path='/users/:userId/albums/:albumId'>
+          <Route exact path='/users/:userId/albums/:albumId/images'>
             <SingleAlbum />
+          </Route>
+          <Route path='/users/:userId/albums/:albumId/edit'>
+            <EditAlbum />
           </Route>
         </Switch>
       )}

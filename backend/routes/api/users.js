@@ -74,6 +74,7 @@ router.get('/:id/albums', asyncHandler(async function(req, res){
   return res.json(albums)
 }))
 
+//get a specific album
 router.get('/albums/:albumId', asyncHandler(async function(req, res){
   const album = await Album.findByPk(req.params.albumId)
   return res.json(album)
@@ -84,14 +85,6 @@ router.post('/:id/albums', asyncHandler(async (req, res) => {
   const album = await Album.create(req.body)
   res.json(album)
 }))
-
-const albumNotFound = (albumId) => {
-  const error = new Error();
-  error.title = 'Album Not Found'
-  error.message = 'Id does not exist'
-  error.status = 404
-  return error
-}
 
 
 

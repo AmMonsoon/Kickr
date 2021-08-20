@@ -100,7 +100,7 @@ const albumReducer = (state = {} , action) => {
         case EDIT_ALBUM:
             return{
                 ...newState,
-                [action.editAlbum.id]: action.album
+                [action.editedAlbum.id]: action.editedAlbum
             }
         case REMOVE_ALBUM:{
             if(newState[action.albumId]) delete newState[action.albumId]
