@@ -1,7 +1,7 @@
 import {useState} from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
-import { addOneImage } from '../../store/images'; 
+import { newImage } from '../../store/images'; 
 import {useHistory} from 'react-router-dom'
 
 
@@ -11,20 +11,21 @@ const history = useHistory()
 const {albumId} = useParams()
 const [content, setContent] = useState('')
 const [imageUrl, setImageUrl] = useState('')
-
+const userId = useSelector(state => state.session.user.id)
 
 const handleSubmit = async (e) => {
     e.preventDefault();
 
     const image = {
+      userId,
       albumId,
       imageUrl,
       content  
     }
-
-    let addedImage = await dispatch(addOneImage(image, albumId))
+console.log('IMAGE', image)
+    let addedImage = await dispatch(newImage(image, albumId))
     if(addedImage){
-        history.push(`/albums/${albumId}`)
+        history.push(`/users/${userId}/albums/${albumId}/images`)
         window.location.reload()
     }
 }

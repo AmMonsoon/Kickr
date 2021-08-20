@@ -10,6 +10,7 @@ import Albums from "./components/Albums/Albums";
 // import AlbumForm from "./components/Albums/AlbumForm"
 import SingleAlbum from "./components/Albums/SingleAlbum"
 import EditAlbum from "./components/Albums/EditAlbum";
+import EditImage from "./components/Images/EditImage";
 
 function App() {
   const dispatch = useDispatch();
@@ -41,6 +42,9 @@ function App() {
           </Route>
           <Route path='/users/:userId/albums/:albumId/edit'>
             <EditAlbum />
+          </Route>
+          <Route exact path='/images/:imageId/edit'>
+            <EditImage />
           </Route>
         </Switch>
       )}
