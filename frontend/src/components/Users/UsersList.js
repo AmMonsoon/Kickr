@@ -32,7 +32,7 @@ dispatch(getUsers(userId))
             <div className='users-list'>
 
            {users.map(user => 
-           <NavLink className='user-link' key={user.id} to={`/users/${user.id}`}>
+           <NavLink className='user-link' key={user.id}to={`/users/${user.id}`}>
                <div className='users-card' key={user.id}> 
                <h3>{user.username}</h3>
            <img className='default-icon' src='./images/icon-default.png' alt='' /> 

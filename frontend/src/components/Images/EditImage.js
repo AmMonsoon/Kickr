@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useParams , useHistory} from "react-router";
 import { updateImage } from "../../store/images";
 import { useState , useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,6 +6,7 @@ import { fetchImages } from "../../store/images";
 
 
 const EditImage = () => {
+const history = useHistory()
 const dispatch = useDispatch()
 const {albumId, imageId} = useParams()
 const image = useSelector(state => state.images[imageId])
@@ -45,6 +46,7 @@ const handleSubmit = async (e) => {
     
     await dispatch(updateImage(editedImage))
     reset()
+    history.push(`/`)
     
 }
 

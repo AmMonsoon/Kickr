@@ -9,7 +9,7 @@ const AlbumDisplay = () => {
 
 
     return(
-        <div className='single album page'>
+        <div className='single-album-page'>
             <ImageDisplay />
             <PostAnImage />
             {/* <EditImage /> */}

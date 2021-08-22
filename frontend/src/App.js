@@ -11,6 +11,7 @@ import Albums from "./components/Albums/Albums";
 import SingleAlbum from "./components/Albums/SingleAlbum"
 import EditAlbum from "./components/Albums/EditAlbum";
 import EditImage from "./components/Images/EditImage";
+import HomeDisplay from "./components/Home/Home";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,6 +25,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path="/">
+            <HomeDisplay />
+          </Route>
           <Route  path="/signup">
             <SignUpFormPage />
           </Route>
