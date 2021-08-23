@@ -1,0 +1,38 @@
+.albums-images{
+    height: 150px;
+    width: 200px;
+    border-radius: 4px;
+}
+.albums-images:hover {
+    box-shadow: rgb(18, 143, 220) 0px 20px 30px -10px;
+  }
+.edit-album{
+    cursor: pointer;
+    border-radius: 5px;
+    color:white;
+    padding: 10px;
+    background-color: rgb(18, 143, 220);
+}
+
+.post-image{
+    cursor: pointer;
+    border-radius: 3px;
+    background-color: rgb(47, 141, 47);
+    color: white;
+}
+
+.remove-image{
+    cursor: pointer;
+    border-radius: 3px;
+    background-color: rgb(204, 79, 79);
+
+    color: lightcyan;
+}
+
+
+
+.images-layout{
+    display: flex;
+    flex-wrap: wrap;
+    
+}

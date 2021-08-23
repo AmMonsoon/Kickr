@@ -1,1 +1,40 @@
 /* TODO Add site wide styles */
+.nav-container{
+  
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        position: relative;
+        z-index: 10;
+        width: 98%;
+        top: -16px;
+        left: -4px;
+        background-color: rgb(18, 143, 220);
+        color: white;
+        font-family: 'Exo 2', sans-serif;
+        opacity: 90%;
+    
+}
+.nav-container li {
+    list-style-type: none;
+    margin: 10px 30px;
+}
+
+.profile-button{
+    background: transparent;
+    border: transparent;
+    margin-right: 35px;
+}
+
+.profile-icon{
+    border-radius: 10px;
+    cursor: pointer;
+    width: 29px;
+    height: 30px;
+}
+
+.home-icon{
+    border-radius: 5px;
+    width: 34px;
+    height: 30px;
+}

@@ -1,0 +1,73 @@
+.albums-diplay{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+}
+
+
+.albums-diplay img{
+    
+    object-fit: cover;
+    /* box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px; */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    height: 150px;
+    width: 200px;
+}
+
+.albums-layout{
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+.albums-display a{
+width: fit-content;
+
+}
+
+.album-link{
+    display: flex;
+    text-decoration: none;
+    /* border: 1px solid red; */
+    /* width: 300px; */
+}
+
+.albums-link-image{
+    /* border: 1px solid blue; */
+    width: 300px;
+
+}
+
+.albums-link-image img{
+    border-radius: 5px;
+    height: 250px;
+    width: 250px;
+}
+
+
+.albums-link-image img:hover {
+    box-shadow: rgb(18, 143, 220) 0px 20px 30px -10px;
+  }
+
+.remove-album{
+    cursor: pointer;
+    border-radius: 3px;
+    background-color:  rgb(204, 79, 79);
+    
+    color: lightcyan;
+}
+
+.add-album{
+    cursor: pointer;
+    border-radius: 3px;
+    background-color: rgb(47, 141, 47);
+    color: white;
+}
+
+.album-title {
+    text-decoration: none;
+}
+
+

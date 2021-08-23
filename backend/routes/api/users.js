@@ -3,7 +3,9 @@ const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User } = require('../../db/models');
+const { User ,Album} = require('../../db/models');
+
+
 
 const router = express.Router();
 
@@ -42,6 +44,53 @@ router.post(
       });
     }),
   );
+
+//User listing
+router.get('/', asyncHandler(async function (req,res){
+const user = await User.findAll();
+return res.json(user)
+}))
+
+
+//Get specific user
+router.get('/:id', asyncHandler(async function(req, res){
+  const user = await User.findAll({
+   where:{ 
+     id: req.params.id
+   },
+   include: Album
+  })
+
+  return res.json(user)
+}))
+
+//Get all albums for a specific user
+router.get('/:id/albums', asyncHandler(async function(req, res){
+  const albums = await Album.findAll({
+    where: {
+      userId: req.params.id
+    }
+  })
+  return res.json(albums)
+}))
+
+//get a specific album
+router.get('/albums/:albumId', asyncHandler(async function(req, res){
+  const album = await Album.findByPk(req.params.albumId)
+  return res.json(album)
+}))
+
+//Create a new album
+router.post('/:id/albums', asyncHandler(async (req, res) => {
+  const album = await Album.create(req.body)
+  res.json(album)
+}))
+
+
+
+
+
+
 
 
 module.exports = router;
