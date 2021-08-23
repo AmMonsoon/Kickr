@@ -54,7 +54,7 @@ width: fit-content;
 .remove-album{
     cursor: pointer;
     border-radius: 3px;
-    background-color: red;
+    background-color:  rgb(204, 79, 79);
     
     color: lightcyan;
 }
