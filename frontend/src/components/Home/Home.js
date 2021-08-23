@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { NavLink } from "react-router-dom";
+// import { useEffect } from "react";
+// import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router";
 import './Home.css'
 
@@ -15,6 +15,7 @@ const routeChange = () =>{
 
     return(
     <div className='home-display'>
+        <h1>Welcome to Kickr</h1>
         <button id='check-button'type='button' onClick={routeChange}>Check Out Some Kicks</button>
         <img className="slide-1" src='../../images/slide-1.jpeg' alt=''/>
         <div className='footer'> created by Alex Monson</div>

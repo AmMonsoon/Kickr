@@ -1,0 +1,34 @@
+.albums-images{
+    height: 150px;
+    width: 200px;
+}
+
+.edit-album{
+    cursor: pointer;
+    border-radius: 5px;
+    color:white;
+    background-color: rgb(18, 143, 220);
+}
+
+.post-image{
+    cursor: pointer;
+    border-radius: 3px;
+    background-color: rgb(47, 141, 47);
+    color: white;
+}
+
+.remove-image{
+    cursor: pointer;
+    border-radius: 3px;
+    background-color: red;
+
+    color: lightcyan;
+}
+
+
+
+.images-layout{
+    display: flex;
+    flex-wrap: wrap;
+    
+}

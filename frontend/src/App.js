@@ -38,9 +38,6 @@ function App() {
             <UserProfile />
             <Albums />
           </Route>
-          <Route exact path='/users/:albumId/edit'>
-            {/* <AlbumForm /> */}
-          </Route>
           <Route exact path='/users/:userId/albums/:albumId/images'>
             <SingleAlbum />
           </Route>

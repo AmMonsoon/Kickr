@@ -8,7 +8,7 @@ import { fetchImages } from "../../store/images";
 const EditImage = () => {
 const history = useHistory()
 const dispatch = useDispatch()
-const {albumId, imageId} = useParams()
+const {albumId, imageId,} = useParams()
 const image = useSelector(state => state.images[imageId])
 const [content, setContent] = useState('')
 const [imageUrl, setImageUrl] = useState('')

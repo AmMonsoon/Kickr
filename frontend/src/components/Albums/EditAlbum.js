@@ -3,7 +3,7 @@ import { updateAlbum } from "../../store/albums";
 import { useState , useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAlbums } from "../../store/albums";
-
+import './EditAlbum.css'
 
 const EditAlbum = () => {
 const dispatch = useDispatch()
@@ -52,17 +52,17 @@ if(album){
     
     return(
 <section className='edit-form'>
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className='edit-form-fields'>
         <label>
-            Title
-        <input type='text' value={title} onChange={e => setTitle(e.target.value)} />
+            Title :
+        <input  className='edit-album-input' type='text' value={title} onChange={e => setTitle(e.target.value)} />
         </label>
         <label>
-            ImageURL
-        <input type='text' value={imageUrl} onChange={e => setImageUrl(e.target.value)}/>
+            ImageURL :
+        <input className='edit-album-input' type='text' value={imageUrl} onChange={e => setImageUrl(e.target.value)}/>
         </label>
-    <button type='submit'>Edit</button>
-    <button type='button' onClick={handleCancelClick}>Cancel</button>
+    <button className='edit-add' type='submit' >Edit</button>
+    <button className='edit-cancel' type='button' onClick={handleCancelClick}>Cancel</button>
     </form>
 </section>
 );

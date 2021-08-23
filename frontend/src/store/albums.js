@@ -32,7 +32,7 @@ export const removeAlbum = albumId => ({
 
 // get all the albums of a specific user 
 export const fetchAlbums =  (userId) => async(dispatch) =>{
-    console.log(userId)
+    
     const response = await fetch(`/api/users/${userId}/albums`)
     const albums = await response.json()
     if(response.ok){

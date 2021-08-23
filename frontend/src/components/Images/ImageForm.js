@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { newImage } from '../../store/images'; 
 import {useHistory} from 'react-router-dom'
-
+import './ImageForm.css'
 
 const PostAnImage = () => {
 const dispatch = useDispatch();
@@ -22,7 +22,7 @@ const handleSubmit = async (e) => {
       imageUrl,
       content  
     }
-console.log('IMAGE', image)
+
     let addedImage = await dispatch(newImage(image, albumId))
     if(addedImage){
         history.push(`/users/${userId}/albums/${albumId}/images`)
@@ -35,11 +35,11 @@ const handleCancelClick = e => {
 }
 return(
   <section className='new-image-form'>
-      <form onSubmit={handleSubmit}>
-        <input type="text" placeholder= "Image URL" required value={imageUrl} onChange={e => setImageUrl(e.target.value)} />        
-        <input type="text" placeholder= "Add a caption"  value={content} onChange={e => setContent(e.target.value)} />
-        <button type="submit">Add</button>
-        <button type="button" onClick={handleCancelClick}>Cancel</button>
+      <form onSubmit={handleSubmit} className='new-image-form-fields'>
+        <input className='new-image-form-input'type="text" placeholder= "Image URL" required value={imageUrl} onChange={e => setImageUrl(e.target.value)} />        
+        <input className='new-image-form-input' type="text" placeholder= "Add a caption"  value={content} onChange={e => setContent(e.target.value)} />
+        <button className='form-add' type="submit">Add</button>
+        <button className='form-cancel' type="button" onClick={handleCancelClick}>Cancel</button>
       </form>
 
   </section>  

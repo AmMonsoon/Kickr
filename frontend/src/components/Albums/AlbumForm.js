@@ -41,17 +41,19 @@ const handleCancelClick = (e) => {
 
 
 return (
-<section className='new-album-form'>
-    <form onSubmit={handleSubmit}>
-        <input type="text" placeholder= "Title" required value={title} onChange={e => setTitle(e.target.value)} />
-        <input type="text" placeholder= "Image URL" required value={imageUrl} onChange={e => setImageUrl(e.target.value)} /> 
-       
-        {/* <textarea type="description" placeholder="description" value={description} onChange={e => setDescription(e.target.value)}/> */}
-        <button type="submit">Add</button>
-        <button type="button" onClick={handleCancelClick}>Cancel</button>
-    </form>
+<div className='new-album-layout'>
+    <section className='new-album-form'>
+        <form onSubmit={handleSubmit} className='new-album-form-fields'>
+            <input type="text" className='new-album-form-input' placeholder= "Title" required value={title} onChange={e => setTitle(e.target.value)} />
+            <input type="text" className='new-album-form-input' placeholder= "Image URL" required value={imageUrl} onChange={e => setImageUrl(e.target.value)} /> 
+        
+            {/* <textarea type="description" placeholder="description" value={description} onChange={e => setDescription(e.target.value)}/> */}
+            <button className='form-add' type="submit">Add</button>
+            <button className='form-cancel' type="button" onClick={handleCancelClick}>Cancel</button>
+        </form>
 
-</section>
+    </section>
+</div>
 );
 
 }

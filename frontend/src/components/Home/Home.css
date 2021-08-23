@@ -15,7 +15,11 @@
     left: 0;
     z-index: 0;
   }
-
+.home-display h1{
+  color: white;
+  align-self: center;
+  z-index: 2;
+}
 #check-button{
     color:  #128fdc;
     cursor: pointer;

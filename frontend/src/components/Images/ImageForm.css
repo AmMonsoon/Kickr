@@ -1,23 +1,18 @@
-.new-album-layout {
-   
-    max-width: 450px;
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-}
-.new-album-form-fields{
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-}
 
 
-.new-album-form{
+.new-image-form{
     border-radius: 5px;
     background-color: rgb(115, 131, 141);
     width: 300px;
     height: 193px;
 }
 
-.new-album-form-input{
+.new-image-form-fields{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+.new-image-form-input{
     border-radius: 5px;
    margin: 10px;
 }

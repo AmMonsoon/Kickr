@@ -23,7 +23,7 @@ const albums  = useSelector(state => Object.values(state.albums));
 // }
 
 useEffect(() => {
-    console.log("hit use effect")
+    // console.log("hit use effect")
     dispatch(fetchAlbums(+userId))
 }, [dispatch, userId])
 
@@ -32,30 +32,31 @@ const removeAlbum = albumId => e => {
 
     e.preventDefault();
     dispatch(deleteAlbum(albumId))
+    window.location.reload()
     // history.push(`/users/${userId}`)
 }
 
 return(
-<div className='albums-display'>
-    <div className='users-list'>
-       {albums.map(album =>  
-       <NavLink className='album-link' key={album.id} to={`/users/${userId}/albums/${album.id}`}>
-           <div className='albums-link-image' key={album.id}>
-           <p>{album.title}</p>
-           <img src={album?.imageUrl} alt='album-cover'/>
-           <button type='button' onClick={removeAlbum(album.id)}>-</button>
-           </div>
-       </NavLink>
-
-)}
-    <div className='show-album-form'>
+<div className='albums-display' id='albums-display'>
+<div className='show-album-form'>
            <p>Add an Album</p>
-        <button type='button' value={showForm} onClick={() => setShowForm(!showForm)}>+</button>
+        <button className='add-album'type='button' value={showForm} onClick={() => setShowForm(!showForm)}>+</button>
     </div>
     <div className='album-form' hidden={showForm}>
            <AlbumForm  />
     </div>
+    <div className='albums-layout'> 
+       {albums.map(album => 
+       <NavLink className='album-link' key={album.id} to={`/users/${userId}/albums/${album.id}/images`}>
+           <div className='albums-link-image' key={album.id}>
+           <h3 className='album-title'>{album.title}</h3>
+                <img src={album?.imageUrl} alt='album-cover'/>
+           <button className='remove-album'type='button' onClick={removeAlbum(album.id)}>-</button>
+           </div>
+       </NavLink>
+    )}
     </div>
+   
 </div>
 );
 }

@@ -1,17 +1,19 @@
-.user-display div{
+.user-display {
     display: flex;
-    flex-direction: column;
-    width:0;
-    right:0;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
-.user-list{
+.users-list{
     display:flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
 
+.user-link{
+    width: fit-content;
+}
 .users-card{
     display: flex;
     flex-direction: column;
